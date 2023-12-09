@@ -28,7 +28,7 @@ import threading
 from flask import Flask, jsonify, make_response, request
 from flask_httpauth import HTTPBasicAuth
 from werkzeug.security import generate_password_hash, check_password_hash
-
+import config
 
 app = Flask(__name__)
 
@@ -75,7 +75,7 @@ class openAi:
         self.sms = SMS()
         self.headless = True
         self.trysList = {}
-        self.solver = TwoCaptcha('9234cf1ef978837f23f917b9d9cb0541')
+        self.solver = TwoCaptcha(os.getenv("TwoCaptcha_API_KEY"))
 
     def vpn_requset(self, method):
         test_proc = subprocess.run([

@@ -12,6 +12,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 import time
 from twocaptcha import TwoCaptcha
+import config
 
 
 class LactorDriver(WebElement):
@@ -160,7 +161,7 @@ class BaseDriver:
     def __init__(self):
         self.driver = None
         self.element = None
-        self.solver = TwoCaptcha('9234cf1ef978837f23f917b9d9cb0541')
+        self.solver = TwoCaptcha(os.getenv("TwoCaptcha_API_KEY"))
 
     class EventListeners(AbstractEventListener):
 
