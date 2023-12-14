@@ -1,4 +1,5 @@
 from datetime import datetime
+import os
 import re
 from time import sleep
 import uuid
@@ -30,7 +31,7 @@ class Claude:
         self.cookies = None
         self.recaptcha_code = None
         self.recent_conversations = None
-        self.solver = TwoCaptcha('9234cf1ef978837f23f917b9d9cb0541')
+        self.solver = TwoCaptcha(os.getenv("TwoCaptcha_API_KEY"))
         self.client = tls_client.Session(
             client_identifier="chrome112",
             random_tls_extension_order=True,
